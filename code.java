@@ -32,10 +32,10 @@ class mainpage{
 			lblId.setBounds(x,y+120,width,height);				txtId.setBounds(x+160,y+120,width+100,height);
 			lblContact.setBounds(x,y+160,width,height);			txtContact.setBounds(x+160,y+160,width+100,height);
 			
-			frame.add(lblName);			frame.add(txtName);
+			frame.add(lblName);		frame.add(txtName);
 			frame.add(lblEmail);		frame.add(txtEmail);
 			frame.add(lblIdType);		frame.add(txtIdType);	
-			frame.add(lblId);			frame.add(txtId);
+			frame.add(lblId);		frame.add(txtId);
 			frame.add(lblContact);		frame.add(txtContact);
 		//**************************************************************************************************************
 		
@@ -74,7 +74,7 @@ class mainpage{
 
 			frame.add(lblVenue);
 			frame.add(lblStayingPlace);		frame.add(txtStayingPlace);
-			frame.add(lblDays);				frame.add(txtDays);
+			frame.add(lblDays);			frame.add(txtDays);
 		//**************************************************************************************************************	
 
 		Webcam buildin = Webcam.getWebcams().get(0);
@@ -91,93 +91,3 @@ public class code{
 		obj.display();
 	}
 }
-			
-/*
-public class code implements ActionListener,ItemListener
-{
-	TextArea txtArea;
-	Label lblName, lblEmail, lblId, lblContact, lblTime, lblHostName, lblHostEmail, lblHost, lblIdType; 
-	Checkbox onehour, fivehour, tenhour, other;
-	CheckboxGroup txtTime;
-	Button submit;
-	Color background = new Color(50, 50, 50);
-	Color foreground = new Color(65, 105, 225);
-	Color purple = new Color(115, 25, 150);
-	Choice txtIdType;
-	Font font = new Font("Arial", Font.BOLD, 12);
-	public void init()
-	{
-		setBackground(background);
-		setForeground(foreground);
-		
-
-
-		//
-		lblTime.setBounds(x,y+320,width,height);
-		txtTime=new CheckboxGroup();
-
-		onehour = new Checkbox("1", true, txtTime);
-	   	fivehour = new Checkbox("5", false, txtTime);
-	   	tenhour = new Checkbox("10", false, txtTime);
-	   	other = new Checkbox(">10", false, txtTime);
-
-	   	onehour.setBounds(200, 350, 50, 30);
-	   	fivehour.setBounds(250, 350, 50, 30);
-	   	tenhour.setBounds(300, 350, 50, 30);
-	   	other.setBounds(x+320, 350, 50, 30);
-
-	   	submit = new Button("Submit");
-	   	submit.setBackground(purple);
-	   	submit.setForeground(Color.white);
-	   	submit.setBounds(200, 400, 100, 40);
-
-	   	txtArea = new TextArea(400,400);
-	   	txtArea.setBounds(0, 440, 600, 160);
-
-		
-		frame.add(lblTime);		frame.add(onehour);		frame.add(fivehour);		frame.add(tenhour);		frame.add(other);
-		
-		frame.add(submit);
-		frame.add(txtArea);
-		setSize(600,600);  
-        setLayout(null);  
-        setVisible(true);  
-
-		submit.frame.addActionListener(this);
-	}
-
-	public void actionPerformed(ActionEvent ae)
-	{
-		if( isName(txtName.getText())		&& 
-			isEmail(txtEmail.getText())		&&
-			isContact(txtContact.getText()))
-		{
-			txtArea.setText("NAME: "+txtName.getText()+"\n"+"E-MAIL: "+txtEmail.getText()+"\n"+"ID: "+txtId.getText()+"\n"+"CONTACT: "+txtContact.getText());	
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null, "Invalid Input");
-		}
-	}
-	public static boolean isName(String input)
-	{
-		return true;
-		//return Pattern.matches("^[A-Za-z] [A-Za-z]$", input);
-	}
-	public static boolean isContact(String input)
-	{
-		return true;
-		//return Pattern.matches("^[A-Za-z] [A-Za-z]$", input);
-	}
-	public static boolean isEmail(String input)
-	{
-		return true;
-		//return Pattern.matches("??????????@iiita.ac.in$", input);
-	}
-
-	public void itemStateChanged(ItemEvent ie)
-	{
-
-	}
-}
-*/
