@@ -77,9 +77,19 @@ class mainpage{
 			frame.add(lblDays);			frame.add(txtDays);
 		//**************************************************************************************************************	
 
-		Webcam buildin = Webcam.getWebcams().get(0);
-		frame.setSize(400,500);//400 width and 500 height  
+		//**************************************************************************************************************	
+		// SUBMIT BUTTON
+			submit = new JButton("Submit");
+			submit.setBackground(purple);
+			submit.setForeground(Color.white);
+			submit.setBounds(150, 480, width, height);
+			frame.add(submit);
+		//**************************************************************************************************************	
+		
+		frame.setSize(600,600);
 		frame.setLayout(null);//using no layout managers  
+		//frame.getContentPane().setBackground(background);
+		//frame.getContentPane().setForeground(foreground);
 		frame.setVisible(true);//making the frame visible
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
