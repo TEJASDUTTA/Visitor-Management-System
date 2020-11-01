@@ -48,6 +48,7 @@ public class admin_login extends JFrame implements ActionListener{
         // Show password
         JCheckBox show_pass = new JCheckBox("Show password");
         show_pass.setBounds(40,120,200,30);
+        show_pass.setBackground(Color.white);
         add(show_pass);
 
         show_pass.addItemListener(new ItemListener(){
