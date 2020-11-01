@@ -24,6 +24,7 @@ public class admin_login extends JFrame implements ActionListener{
  
         // Password Field
         txtPass=new JPasswordField();
+        txtPass.setEchoChar('*');
         txtPass.setBounds(150,70,150,30);
         add(txtPass);
         
