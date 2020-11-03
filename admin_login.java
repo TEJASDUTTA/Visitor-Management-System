@@ -1,56 +1,28 @@
-import java.awt.*;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
-public class admin_login extends JFrame implements ActionListener{
+public class admin_login
+{
+    static JFrame frame;
+    static JPanel panel = new JPanel(new GridLayout(7,1)), panel1=new JPanel(new GridLayout(1,1)), mp = new JPanel(new GridLayout(1,2));
+    static JLabel lblWelcome, lblPass;
+    static JTextField txtUser;
+    static JPasswordField txtPass;
+    static JButton btnLogin, btnAdmin, btnSecurity;
+    static JCheckBox show_pass;
 
-    JFrame f;
-    JLabel lblPass;
-    JTextField t1;
-    JPasswordField txtPass;
-    JButton btnLogin,b2;
+    static void display()
+    {
+        //masterframe = new JFrame("master");
+        frame = new JFrame("ADMIN LOGIN");
+        lblWelcome = new JLabel("<HTML><h2>Welcome Back!</h2></HTML>", JLabel.CENTER);
+        lblPass = new JLabel("<HTML><h3>Enter Admin Password:</h3></HTML>");
+        txtPass = new JPasswordField(60);
 
-    admin_login(){
-
-        super("Admin Login");
-
-        setBackground(Color.white);
-        setLayout(null);
-        
-        // Password Label
-        lblPass = new JLabel("Password");
-        lblPass.setBounds(40,70,100,30);
-        add(lblPass);
- 
-        // Password Field
-        txtPass=new JPasswordField();
-        txtPass.setEchoChar('*');
-        txtPass.setBounds(150,70,150,30);
-        add(txtPass);
-        
-        // Inserting image
-        ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("vms.jpeg"));
-        Image i2 = i1.getImage().getScaledInstance(170,170,Image.SCALE_DEFAULT);
-        ImageIcon i3 =  new ImageIcon(i2);
-        JLabel l3 = new JLabel(i3);
-        l3.setBounds(350,20,150,150);
-        add(l3);
-
-        // Login Button
-        btnLogin = new JButton("Login");
-        btnLogin.setBounds(140,180,120,30);
-        btnLogin.setFont(new Font("serif",Font.BOLD,15));
-        btnLogin.addActionListener(this);
-        btnLogin.setBackground(Color.BLACK);
-        btnLogin.setForeground(Color.WHITE);
-        add(btnLogin);
-
-        // Show password
-        JCheckBox show_pass = new JCheckBox("Show password");
-        show_pass.setBounds(40,120,200,30);
-        show_pass.setBackground(Color.white);
-        add(show_pass);
-
+        show_pass = new JCheckBox("Show password");
+        show_pass.setBackground(new Color(45,45,45));
+        show_pass.setForeground(new Color(52,119,235));
         show_pass.addItemListener(new ItemListener(){
             public void itemStateChanged(ItemEvent e){
                 if (e.getStateChange() == ItemEvent.SELECTED){
@@ -61,27 +33,40 @@ public class admin_login extends JFrame implements ActionListener{
                 }
             }
         });
-        
-        getContentPane().setBackground(Color.WHITE);
 
-        setVisible(true);
-        setSize(600,300);
-        setLocation(500,300);
+        lblWelcome.setForeground(new Color(52,119,235));
+        lblPass.setForeground(new Color(52,119,235));
 
+        btnLogin = new JButton("Login");
+        btnLogin.setBackground(new Color(52,119,235));
+        btnLogin.addActionListener(new CustomActionListener());
+
+        panel.add(lblWelcome);
+        panel.add(lblPass);
+        panel.add(txtPass);
+        panel.add(show_pass);
+        panel.add(btnLogin);
+
+        panel.setBackground(new Color(45,45,45));
+        frame.add(panel);
+        frame.setSize(550,350);
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-    // Password checking
-    public void actionPerformed(ActionEvent ae){
-        String password = txtPass.getText();
-        if (password.trim().equals("pass")){
-            JOptionPane.showMessageDialog(null, "Login successful");
+    static class CustomActionListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            String password = txtPass.getText();
+            if (password.trim().equals("pass")){
+                JOptionPane.showMessageDialog(null, "Login successful");
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Incorrect Password");
+            }
         }
-        else{
-            JOptionPane.showMessageDialog(null, "Incorrect Password");
-            //setVisible(false);
-        }
-        
-    }
-    public static void main(String[] arg){
-        admin_login l = new admin_login();
+    }   
+    public static void main(String []args)
+    {
+        admin_login obj = new admin_login();
+        obj.display();
     }
 }
