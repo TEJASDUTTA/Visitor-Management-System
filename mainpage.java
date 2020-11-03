@@ -15,56 +15,61 @@ class mainpage
 
 	public static void display()
 	{
-		frame = new JFrame("Main Screen");
-		panel = new JPanel(new BorderLayout(10,10));
-		panel1 = new JPanel(new GridLayout(7,2));
-		panel2 = new JPanel(new GridLayout(2,1,10,10));
-		mainpanel = new JPanel(new GridLayout(2,1,10,10));
-		lblvms = new JLabel("<HTML><h1><u>Visitor Management System</u></h1></HTML>", JLabel.CENTER);
-		lblvms.setForeground(new Color(115, 25, 170));
+		//**************************************************************************************************************
+			frame = new JFrame("Main Screen");
+			panel = new JPanel(new BorderLayout(10,10));
+			panel1 = new JPanel(new GridLayout(7,2));
+			panel2 = new JPanel(new GridLayout(2,1,10,10));
+			mainpanel = new JPanel(new GridLayout(2,1,10,10));
+		//**************************************************************************************************************
 
-		quit = new JButton("<HTML><h2>Quit</h2></HTML>");
-		admin_login = new JButton("<HTML><h2>Admin Login</h2></HTML>");
-		update_details = new JButton("<HTML><h2>Update Details</h2></HTML>");
-		fill_details = new JButton("<HTML><h2>Fill Details</h2></HTML>");
-		view_details = new JButton("<HTML><h2>View Details</h2></HTML>");
+		//**************************************************************************************************************
+		// ADD BUTTONS AND LABELS
+			lblvms = new JLabel("<HTML><h1><u>Visitor Management System</u></h1></HTML>", JLabel.CENTER);
+			lblvms.setForeground(new Color(115, 25, 170));
+			quit = new JButton("<HTML><h2>Quit</h2></HTML>");
+			admin_login = new JButton("<HTML><h2>Admin Login</h2></HTML>");
+			update_details = new JButton("<HTML><h2>Update Details</h2></HTML>");
+			fill_details = new JButton("<HTML><h2>Fill Details</h2></HTML>");
+			view_details = new JButton("<HTML><h2>View Details</h2></HTML>");
 
-		admin_login.setBackground(new Color(192,192,192));
-		quit.setBackground(new Color(209,26,42));
-		quit.addActionListener(new CustomActionListener());
+			admin_login.setBackground(new Color(192,192,192));
+			quit.setBackground(new Color(209,26,42));
+			quit.addActionListener(new CustomActionListener());
 
-		panel2.add(fill_details);
-		panel2.add(view_details);
+			panel2.add(fill_details);
+			panel2.add(view_details);
 
-		panel.add(panel2,BorderLayout.CENTER);
-		panel.add(admin_login,BorderLayout.LINE_START); 
-		panel.add(update_details,BorderLayout.LINE_END);
-		panel.add(lblvms,BorderLayout.NORTH); 
-		panel.add(quit,BorderLayout.SOUTH);
+			panel.add(panel2,BorderLayout.CENTER);
+			panel.add(admin_login,BorderLayout.LINE_START); 
+			panel.add(update_details,BorderLayout.LINE_END);
+			panel.add(lblvms,BorderLayout.NORTH); 
+			panel.add(quit,BorderLayout.SOUTH);
+			panel.setBackground(new Color(45, 45, 45));
+			panel1.setBackground(new Color(45, 45, 45));
+			panel2.setBackground(new Color(45, 45, 45));
+		//**************************************************************************************************************
 
-		panel.setBackground(new Color(45, 45, 45));
-		panel1.setBackground(new Color(45, 45, 45));
-		panel2.setBackground(new Color(45, 45, 45));
+		//**************************************************************************************************************
+		// ADDING NAMES AND ROLLNO.S
+			panel1.add(new JLabel("<HTML><h2><u>GROUP MEMBER</u></h2></HTML>", JLabel.CENTER));
+			panel1.add(new JLabel("<HTML><h2><u>ENROLLMENT NUMBER</u></h2></HTML>", JLabel.CENTER));
 
-		//panel1.add(new JLabel("<HTML><h2><u>Sr no.</u></h2></HTML>", JLabel.CENTER));
-		panel1.add(new JLabel("<HTML><h2><u>GROUP MEMBER</u></h2></HTML>", JLabel.CENTER));
-		panel1.add(new JLabel("<HTML><h2><u>ENROLLMENT NUMBER</u></h2></HTML>", JLabel.CENTER));
-
-		//String sr[] = {"1    ", "2    ", "3    ", "4    ", "5    "};
-		String members[] = {"Bhupesh Sardana", "Aviral Gupta", "Aryan Dhakad", "Hafiz Ali", "Tejas Dutta"};
-		String roll[] = {"IIT2019156", "IIT2019157", "IIT2019158", "IIT2019159", "IIT2019160"};
-		
-		for(int i=0; i<5; i++)
-		{
-			JLabel lblname = new JLabel("<HTML><h3>" + members[i] + "</h3></HTML>", JLabel.CENTER);
-			JLabel lblroll = new JLabel("<HTML><h3>" + roll[i] + "</h3></HTML>", JLabel.CENTER);
-			lblname.setForeground(new Color(215, 114, 44));
-			lblroll.setForeground(new Color(215, 114, 44));
-			lblname.setBorder(BorderFactory.createLineBorder(Color.gray));
-			lblroll.setBorder(BorderFactory.createLineBorder(Color.gray));
-			panel1.add(lblname);
-			panel1.add(lblroll);
-		}
+			String members[] = {"Bhupesh Sardana", "Aviral Gupta", "Aryan Dhakad", "Hafiz Ali", "Tejas Dutta"};
+			String roll[] = {"IIT2019156", "IIT2019157", "IIT2019158", "IIT2019159", "IIT2019160"};
+			
+			for(int i=0; i<5; i++)
+			{
+				JLabel lblname = new JLabel("<HTML><h3>" + members[i] + "</h3></HTML>", JLabel.CENTER);
+				JLabel lblroll = new JLabel("<HTML><h3>" + roll[i] + "</h3></HTML>", JLabel.CENTER);
+				lblname.setForeground(new Color(215, 114, 44));
+				lblroll.setForeground(new Color(215, 114, 44));
+				lblname.setBorder(BorderFactory.createLineBorder(Color.gray));
+				lblroll.setBorder(BorderFactory.createLineBorder(Color.gray));
+				panel1.add(lblname);
+				panel1.add(lblroll);
+			}
+		//**************************************************************************************************************
 		
 		mainpanel.add(panel);
 		mainpanel.add(panel1);
