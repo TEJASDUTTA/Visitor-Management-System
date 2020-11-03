@@ -1,6 +1,13 @@
 package com.sendemail;
 
 import java.util.Properties;
+import java.io.FileOutputStream;
+
+//com.lowagie...   old version
+//com.itextpdf...  recent version
+import com.itextpdf.text.Document;
+import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Image;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -24,8 +31,8 @@ public class SendEmail {
 
       // Sender's email ID needs to be mentioned
       String from = "abc@gmail.com";//change accordingly
-      final String username = "Aryan";//change accordingly
-      final String password = "*****";//change accordingly
+      final String username = "abc@gmail.com";//change accordingly
+      final String password = "******";//change accordingly
 
       // Assuming you are sending email through relay.jangosmtp.net
       String host = "smtp.gmail.com";
@@ -43,8 +50,19 @@ public class SendEmail {
             return new PasswordAuthentication(username, password);
          }
       });
+      Document document = new Document();
+      String input = "path\\to\\image\\file"; // .gif and .jpg are ok too!
+      String output = "file\\to\\save\\into";
 
       try {
+    	  FileOutputStream fos = new FileOutputStream(output);
+          PdfWriter writer = PdfWriter.getInstance(document, fos);
+          writer.open();
+          document.open();
+          document.add(Image.getInstance(input));
+          document.close();
+          writer.close();
+          
     	  // Create a default MimeMessage object.
           Message message = new MimeMessage(session);
 
@@ -56,15 +74,15 @@ public class SendEmail {
              InternetAddress.parse(to));
 
           // Set Subject: header field
-          message.setSubject("Sending Email With Attachment");
+          message.setSubject("Image->PDF->gmail");
 
           // Create the message part
           BodyPart messageBodyPart = new MimeBodyPart();
 
           // Now set the actual message
-          messageBodyPart.setText("This message was sent by Dhakad");
+          messageBodyPart.setText("sent pdf of image captured via java");
 
-          // Create a multipar message
+          // Create a multipart message
           Multipart multipart = new MimeMultipart();
 
           // Set text message part
@@ -72,7 +90,7 @@ public class SendEmail {
 
           // Part two is attachment
           messageBodyPart = new MimeBodyPart();
-          String filename = "path\to\file";
+          String filename = "file\\to\\save\\into";
           DataSource source = new FileDataSource(filename);
           messageBodyPart.setDataHandler(new DataHandler(source));
           messageBodyPart.setFileName(filename);
@@ -88,6 +106,10 @@ public class SendEmail {
 
       } catch (MessagingException e) {
             throw new RuntimeException(e);
+            
       }
+      catch (Exception e) {
+          e.printStackTrace();
+        }
    }
 }
