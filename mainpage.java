@@ -10,7 +10,7 @@ class mainpage
 {
 	static JFrame frame;
 	static JPanel panel, panel1, panel2, mainpanel;
-	static JLabel lblvms;
+	static JLabel lblvms, lblGroup, lblEnRoll;
 	static JButton quit, admin_login, update_details, fill_details, view_details;
 
 	public static void display()
@@ -33,7 +33,6 @@ class mainpage
 			fill_details = new JButton("<HTML><h2>Fill Details</h2></HTML>");
 			view_details = new JButton("<HTML><h2>View Details</h2></HTML>");
 
-			admin_login.setBackground(new Color(192,192,192));
 			quit.setBackground(new Color(209,26,42));
 			quit.addActionListener(new CustomActionListener());
 
@@ -52,8 +51,13 @@ class mainpage
 
 		//**************************************************************************************************************
 		// ADDING NAMES AND ROLLNO.S
-			panel1.add(new JLabel("<HTML><h2><u>GROUP MEMBER</u></h2></HTML>", JLabel.CENTER));
-			panel1.add(new JLabel("<HTML><h2><u>ENROLLMENT NUMBER</u></h2></HTML>", JLabel.CENTER));
+			lblGroup = new JLabel("<HTML><h2><u>GROUP MEMBER</u></h2></HTML>", JLabel.CENTER);
+			lblEnRoll = new JLabel("<HTML><h2><u>ENROLLMENT NUMBER</u></h2></HTML>", JLabel.CENTER);
+			lblGroup.setForeground(new Color(195,195,195));
+			lblEnRoll.setForeground(new Color(195,195,195));
+
+			panel1.add(lblGroup);
+			panel1.add(lblEnRoll);
 
 			String members[] = {"Bhupesh Sardana", "Aviral Gupta", "Aryan Dhakad", "Hafiz Ali", "Tejas Dutta"};
 			String roll[] = {"IIT2019156", "IIT2019157", "IIT2019158", "IIT2019159", "IIT2019160"};
