@@ -62,10 +62,10 @@ public class lol{
 			lblId.setForeground(new Color(215,215,215));
 			lblContact.setForeground(new Color(215,215,215));
 
-			txtName = new JTextField("Aviral", 60);
-			txtEmail = new JTextField("guptaavi@gmail.com", 60);
-			txtId = new JTextField("aaaaaaaaaa", 60);
-			txtContact = new JTextField("9999999999",60);
+			txtName = new JTextField(60);
+			txtEmail = new JTextField(60);
+			txtId = new JTextField(60);
+			txtContact = new JTextField(60);
 
 			String txtIdTypeOptions[] = {"Aadhar card", "PAN card"};
 			txtIdType = new JComboBox(txtIdTypeOptions);
@@ -95,8 +95,8 @@ public class lol{
 			lblHostName.setForeground(new Color(215,215,215));
 			lblHostEmail.setForeground(new Color(215,215,215));
 
-			txtHostName = new JTextField("Avi", 60);
-			txtHostEmail = new JTextField("iit2019157@iiita.ac.in", 60);
+			txtHostName = new JTextField(60);
+			txtHostEmail = new JTextField(60);
 
 			txtHostName.setInputVerifier(new PassVerifier());
 			txtHostEmail.setInputVerifier(new PassVerifier());
@@ -219,7 +219,7 @@ public class lol{
 					((JTextField) input).setBorder(BorderFactory.createLineBorder(Color.GRAY));
 					return true;
 				}
-				((JTextField) input).setBorder(BorderFactory.createTitledBorder(redline, "Uppercase and Lowercase letters only"));
+				((JTextField) input).setBorder(BorderFactory.createTitledBorder(redline, "Uppercase and Lowercase letters only."));
 				return false;
 			}
 			else if(input.equals(txtEmail) || input.equals(txtHostEmail))
