@@ -31,31 +31,31 @@ class mainpage
 		panel = new JPanel(new BorderLayout(10,10));
 		panel1 = new JPanel(new GridLayout(7,2));
 		panel2 = new JPanel(new GridLayout(2,1,10,10));
-		mainpanel = new JPanel(new GridLayout(2,1,10,10));
+		mainpanel = new JPanel(new GridLayout(1,1,10,10));
 		lblvms = new JLabel("<HTML><h1><u>Visitor Management System</u></h1></HTML>", JLabel.CENTER);
 		lblvms.setForeground(new Color(115, 25, 170));
 
 		quit = new JButton("<HTML><h2>Quit</h2></HTML>");
-                
+					 
 		admin_panel = new JButton("<HTML><h2>Admin Panel</h2></HTML>");
 		
-                update_details = new JButton("<HTML><h2>Update Existing ID</h2></HTML>");
+		update_details = new JButton("<HTML><h2>Update Existing ID</h2></HTML>");
 		fill_details = new JButton("<HTML><h2>New Visitor</h2></HTML>");
-
-                view_details = new JButton("<HTML><h2>Print Existing ID</h2></HTML>");
+		view_details = new JButton("<HTML><h2>Print Existing ID</h2></HTML>");
 
 		admin_panel.setBackground(new Color(192,192,192));
-                admin_panel.addActionListener(new CustomActionListener());
-                
+		admin_panel.addActionListener(new CustomActionListener());
+					 
 		quit.setBackground(new Color(209,26,42));
 		quit.addActionListener(new CustomActionListener());
-                
-                fill_details.addActionListener(new CustomActionListener());
-                view_details.addActionListener(new CustomActionListener());
-                update_details.addActionListener(new CustomActionListener());
+					 
+		fill_details.addActionListener(new CustomActionListener());
+		view_details.addActionListener(new CustomActionListener());
+		update_details.addActionListener(new CustomActionListener());
+
 		panel2.add(fill_details);
 		panel2.add(view_details);
-                
+					 
 
 		panel.add(panel2,BorderLayout.CENTER);
 		panel.add(admin_panel,BorderLayout.LINE_START); 
@@ -67,28 +67,8 @@ class mainpage
 		panel1.setBackground(new Color(45, 45, 45));
 		panel2.setBackground(new Color(45, 45, 45));
 
-		//panel1.add(new JLabel("<HTML><h2><u>Sr no.</u></h2></HTML>", JLabel.CENTER));
-		panel1.add(new JLabel("<HTML><h2><u>GROUP MEMBER</u></h2></HTML>", JLabel.CENTER));
-		panel1.add(new JLabel("<HTML><h2><u>ENROLLMENT NUMBER</u></h2></HTML>", JLabel.CENTER));
-
-		//String sr[] = {"1    ", "2    ", "3    ", "4    ", "5    "};
-		String members[] = {"Bhupesh Sardana", "Aviral Gupta", "Aryan Dhakad", "Hafiz Ali", "Tejas Dutta"};
-		String roll[] = {"IIT2019156", "IIT2019157", "IIT2019158", "IIT2019159", "IIT2019160"};
-		
-		for(int i=0; i<5; i++)
-		{
-			JLabel lblname = new JLabel("<HTML><h3>" + members[i] + "</h3></HTML>", JLabel.CENTER);
-			JLabel lblroll = new JLabel("<HTML><h3>" + roll[i] + "</h3></HTML>", JLabel.CENTER);
-			lblname.setForeground(new Color(215, 114, 44));
-			lblroll.setForeground(new Color(215, 114, 44));
-			lblname.setBorder(BorderFactory.createLineBorder(Color.gray));
-			lblroll.setBorder(BorderFactory.createLineBorder(Color.gray));
-			panel1.add(lblname);
-			panel1.add(lblroll);
-		}
-		
 		mainpanel.add(panel);
-		mainpanel.add(panel1);
+		
 		frame.add(mainpanel);
 		frame.setSize(1920,1080);
 		frame.setVisible(true);
@@ -96,33 +76,33 @@ class mainpage
 	}
 
 	static class CustomActionListener implements ActionListener{
-            public void actionPerformed(ActionEvent ae) {
-                Object source = ae.getSource();
-                 
-                if(source == admin_panel){
-                    admin_login.init();
-                    //new admin_login().f.setVisible(true);
-                }
-                else if(source == fill_details){
-                    //code.init();
-                    lol.init();
-                }
-                else if(source == update_details){
-                    user_login.init();
-                    //new user_login().user_frame.setVisible(true);
-                }
-                else if(source == view_details){
-                    //user_login_2.init();
-                    viewpage.init();
-                }
-                else if(source == quit){
-                    System.exit(0);
-                }
-            }
+		public void actionPerformed(ActionEvent ae) {
+			Object source = ae.getSource();
+
+			if(source == admin_panel){
+				admin_login.init();
+				//new admin_login().f.setVisible(true);
+			}
+			else if(source == fill_details){
+				//code.init();
+				lol.init();
+			}
+			else if(source == update_details){
+				user_login.init();
+				//new user_login().user_frame.setVisible(true);
+			}
+			else if(source == view_details){
+				//user_login_2.init();
+				viewpage.init();
+			}
+			else if(source == quit){
+				System.exit(0);
+			}
+		}
 	}
-        
-        static void init(){
-            try
+			
+	static void init(){
+		try
 		{
 			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 		}
@@ -132,10 +112,10 @@ class mainpage
 		}
 		mainpage obj = new mainpage();
 		obj.display();
-        }
+	}
 
 	public static void main(String []args)
 	{
-            init();
+				init();
 	}
 }
