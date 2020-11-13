@@ -1,6 +1,4 @@
 package vms;
-
-
 import com.github.sarxos.webcam.Webcam;
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +17,7 @@ import java.util.logging.Logger;
 
 public class lol{
 	static JFrame frame = new JFrame("FILL DETAILS");
-        static JFrame prev_img;
+	static JFrame prev_img;
 	static JLabel lblFillDetails, lblCamera, lblVisitor, lblName, lblEmail, lblId, lblContact, lblTime, lblHostName, lblHostEmail, lblHost, lblIdType, lblVenue, lblStayingPlace, lblDays; 
 	static JTextField txtName, txtEmail, txtId, txtContact, txtHostName, txtHostEmail, txtDays;
 	static JComboBox txtIdType, txtStayingPlace;
@@ -30,39 +28,44 @@ public class lol{
 	static JPanel mainpanel = new JPanel(new BorderLayout(10,10));
 	static JPanel panel = new JPanel(new GridLayout(15,2,6,10));
 	static JPanel panel2 = new JPanel(new GridLayout(1,2,10,10));
-        static JPanel panel3 = new JPanel(new GridLayout(10,1));
+	static JPanel panel3 = new JPanel(new GridLayout(10,1));
 
 	static JTextArea txtArea;
 	static Border redline = BorderFactory.createLineBorder(Color.RED);
 	static BufferedImage myPicture;
-        
-        // Storing details
-        static String name, email, id, contact, host_name, host_email, days, id_type, staying_place;
-        static Map <String, ArrayList<String>> hmUser_data = new <String, ArrayList<String>> HashMap();
-        static ArrayList <String> listUser_data = new ArrayList<String> ();
-        
-        static JLabel lblCam_heading;
-        
-        // UUID
-        static String uniqueID;
-        static JFrame prompt_frame;
-        static JLabel lbl_UUID;
-        
+		  
+	// Storing details
+	static String name, email, id, contact, host_name, host_email, days, id_type, staying_place;
+	static Map <String, ArrayList<String>> hmUser_data = new <String, ArrayList<String>> HashMap();
+	static ArrayList <String> listUser_data = new ArrayList<String> ();
+
+	static JLabel lblCam_heading;
+
+	// UUID
+	static String uniqueID;
+	static JFrame prompt_frame;
+	static JLabel lbl_UUID;
+		  
 	static void user_details()
 	{
 		//**************************************************************************************************************
 		// USER DETAILS
-			lblName = new JLabel("Name: ", JLabel.TRAILING);
-			lblEmail = new JLabel("Email: ", JLabel.TRAILING);
-			lblIdType = new JLabel("ID Type:", JLabel.TRAILING);
-			lblId = new JLabel("ID: ", JLabel.TRAILING);
-			lblContact = new JLabel("Contact no.: ", JLabel.TRAILING);
-			lblTime = new JLabel("Choose hours of stay: ", JLabel.TRAILING);		
+			lblName = new JLabel("<HTML><h3>Name: </h3></HTML>", JLabel.TRAILING);
+			lblEmail = new JLabel("<HTML><h3>Email: </h3></HTML>", JLabel.TRAILING);
+			lblIdType = new JLabel("<HTML><h3>ID Type: </h3></HTML>", JLabel.TRAILING);
+			lblId = new JLabel("<HTML><h3>ID: </h3></HTML>", JLabel.TRAILING);
+			lblContact = new JLabel("<HTML><h3>Contact no.: </h3></HTML>", JLabel.TRAILING);
 
-			txtName = new JTextField(60);
-			txtEmail = new JTextField(60);
-			txtId = new JTextField(60);
-			txtContact = new JTextField(60);
+			lblName.setForeground(new Color(215,215,215));
+			lblEmail.setForeground(new Color(215,215,215));
+			lblIdType.setForeground(new Color(215,215,215));
+			lblId.setForeground(new Color(215,215,215));
+			lblContact.setForeground(new Color(215,215,215));
+
+			txtName = new JTextField("Aviral", 60);
+			txtEmail = new JTextField("guptaavi@gmail.com", 60);
+			txtId = new JTextField("aaaaaaaaaa", 60);
+			txtContact = new JTextField("9999999999",60);
 
 			String txtIdTypeOptions[] = {"Aadhar card", "PAN card"};
 			txtIdType = new JComboBox(txtIdTypeOptions);
@@ -86,11 +89,14 @@ public class lol{
 	{
 		//**************************************************************************************************************
 		// HOST DETAILS
-			lblHostName = new JLabel("Host Name: ", JLabel.TRAILING);
-			lblHostEmail = new JLabel("Host Email: ", JLabel.TRAILING);
+			lblHostName = new JLabel("<HTML><h3>Host Name: </h3></HTML>", JLabel.TRAILING);
+			lblHostEmail = new JLabel("<HTML><h3>Host Email: </h3></HTML>", JLabel.TRAILING);
 
-			txtHostName = new JTextField(60);
-			txtHostEmail = new JTextField(60);
+			lblHostName.setForeground(new Color(215,215,215));
+			lblHostEmail.setForeground(new Color(215,215,215));
+
+			txtHostName = new JTextField("Avi", 60);
+			txtHostEmail = new JTextField("iit2019157@iiita.ac.in", 60);
 
 			txtHostName.setInputVerifier(new PassVerifier());
 			txtHostEmail.setInputVerifier(new PassVerifier());
@@ -105,8 +111,11 @@ public class lol{
 	{
 		//**************************************************************************************************************
 		// VENUE DETAILS
-			lblStayingPlace = new JLabel("Staying Place: ", JLabel.TRAILING);
-			lblDays = new JLabel("For How Many Days?", JLabel.TRAILING);
+			lblStayingPlace = new JLabel("<HTML><h3>Staying Place: </h3></HTML>", JLabel.TRAILING);
+			lblDays = new JLabel("<HTML><h3>For How Many Days?</h3></HTML>", JLabel.TRAILING);
+
+			lblStayingPlace.setForeground(new Color(215,215,215));
+			lblDays.setForeground(new Color(215,215,215));
 
 			String txtAllPlaces[] = {"BH-1,2", "BH-3,4", "BH-5", "GH-1,2,3"};
 			txtStayingPlace = new JComboBox(txtAllPlaces);
@@ -135,38 +144,34 @@ public class lol{
 			btnSubmit.addActionListener(new CustomActionListener());
 		//**************************************************************************************************************	
 	}
-        
-        static void camera(){
-                        lblCam_heading = new JLabel("Take a picture for your ID pass");
-                        //lblCam_heading.setBorder(BorderFactory.createLineBorder(Color.black));
-                        lblCam_heading.setFont(new Font("Courier New",Font.BOLD,26));
-                        lblCam_heading.setBackground(new Color(65,65,65));
-                        //lblCam_heading.setForeground(Color.black);
-                        
-                        // Take a picture
-                        btnCamera = new JButton("Take a picture");
-                        btnCamera.setBackground(new Color(0xf6, 0xef, 0xd0));
-                        btnCamera.addActionListener(new CustomActionListener());
-                        
-                        // Preview Image
-                        btnPrev_img = new JButton("Preview image");
-                        btnPrev_img.setBackground(new Color(0xf6, 0xef, 0xd0));
-                        btnPrev_img.addActionListener(new CustomActionListener());
-                        
-                        // Confirm Image
-                        btnConfirm_img = new JButton("Confirm image");
-                        btnConfirm_img.setBackground(new Color(0xf6, 0xef, 0xd0));
-                        btnConfirm_img.addActionListener(new CustomActionListener());
-                        
-                        
-        }
+		  
+	static void camera(){
+		lblCam_heading = new JLabel("Take a picture for your ID pass");
+		lblCam_heading.setFont(new Font("Courier New",Font.BOLD,26));
+		lblCam_heading.setBackground(new Color(65,65,65));
+		
+		// Take a picture
+		btnCamera = new JButton("Take a picture");
+		btnCamera.setBackground(new Color(0xf6, 0xef, 0xd0));
+		btnCamera.addActionListener(new CustomActionListener());
+		
+		// Preview Image
+		btnPrev_img = new JButton("Preview image");
+		btnPrev_img.setBackground(new Color(0xf6, 0xef, 0xd0));
+		btnPrev_img.addActionListener(new CustomActionListener());
+		
+		// Confirm Image
+		btnConfirm_img = new JButton("Confirm image");
+		btnConfirm_img.setBackground(new Color(0xf6, 0xef, 0xd0));
+		btnConfirm_img.addActionListener(new CustomActionListener());					
+	}
 
 	static void frameSettings()
 	{
 		//**************************************************************************************************************	
 		// FRAME SETTINGS
 			panel3.setBorder(BorderFactory.createLineBorder(Color.black));
-                        panel.setBorder(BorderFactory.createLineBorder(Color.black));
+			panel.setBorder(BorderFactory.createLineBorder(Color.black));
 	
 			lblFillDetails = new JLabel("<HTML><h1><u>FILL DETAILS</u></h1></HTML>", JLabel.CENTER);
 			lblFillDetails.setForeground(new Color(115, 25, 170));
@@ -174,18 +179,18 @@ public class lol{
 			btn.setBackground(new Color(45, 45, 45));
 
 			panel3.setBackground(new Color(65, 65, 65));
-                        panel.setBackground(new Color(65, 65, 65));
-                        JPanel empty_panel = new JPanel();
-                        empty_panel.setBackground(new Color(65,65,65));
-                        empty_panel.add(lblCam_heading);
-                        //empty_panel.add(btnCamera);
-                        panel3.add(empty_panel);
-                        panel3.add(btnCamera);
-                        panel3.add(btnPrev_img);
-                        panel3.add(btnConfirm_img);
+			panel.setBackground(new Color(65, 65, 65));
+			JPanel empty_panel = new JPanel();
+			empty_panel.setBackground(new Color(65,65,65));
+			empty_panel.add(lblCam_heading);
+			
+			panel3.add(empty_panel);
+			panel3.add(btnCamera);
+			panel3.add(btnPrev_img);
+			panel3.add(btnConfirm_img);
 			panel2.add(panel);
-                        panel2.add(panel3);
-			//panel2.add(new JLabel("CAMERA", JLabel.CENTER));
+			panel2.add(panel3);
+			
 			panel2.setBackground(new Color(65, 65, 65));
 
 			mainpanel.setBackground(new Color(45, 45, 45));
@@ -199,7 +204,7 @@ public class lol{
 			frame.setSize(1920,1080);
 			frame.setVisible(true);
 			frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                       
+							  
 		//**************************************************************************************************************	
 	}
 
@@ -225,7 +230,7 @@ public class lol{
 					((JTextField) input).setBorder(BorderFactory.createLineBorder(Color.GRAY));
 					return true;
 				}
-				((JTextField) input).setBorder(BorderFactory.createTitledBorder(redline, "Is that an email-id?"));
+				((JTextField) input).setBorder(BorderFactory.createTitledBorder(redline, "Invalid Email."));
 				return false;
 			}
 			else if(input.equals(txtContact))
@@ -236,7 +241,7 @@ public class lol{
 					((JTextField) input).setBorder(BorderFactory.createLineBorder(Color.GRAY));
 					return true;
 				}
-				((JTextField) input).setBorder(BorderFactory.createTitledBorder(redline, "LOL. Can't contact this."));
+				((JTextField) input).setBorder(BorderFactory.createTitledBorder(redline, "Invalid Contact."));
 				return false;
 			}
 			else if(input.equals(txtDays))
@@ -247,7 +252,7 @@ public class lol{
 					((JTextField) input).setBorder(BorderFactory.createLineBorder(Color.GRAY));
 					return true;
 				}
-				((JTextField) input).setBorder(BorderFactory.createTitledBorder(redline, "Is that a NoneDay?"));
+				((JTextField) input).setBorder(BorderFactory.createTitledBorder(redline, "Invalid Number."));
 				return false;
 			}
 			else if(input.equals(txtId))
@@ -281,98 +286,76 @@ public class lol{
 	}
 	static class CustomActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
-                        Object source = e.getSource();
+			Object source = e.getSource();
 			if(source.equals(btnSubmit))
 			{
-//				 // Storing information in hashmap
-                            name = txtName.getText(); 
-                            email = txtEmail.getText();
-                            id = txtId.getText();
-                            contact = txtContact.getText();
-                            host_name = txtHostName.getText();
-                            host_email = txtHostEmail.getText();
-                            days = txtDays.getText();
-                            id_type = txtIdType.getSelectedItem() + "";
-                            staying_place = txtStayingPlace.getSelectedItem() + "";
-                            
-                            // Creating UUID
-                            uniqueID = UUID.randomUUID().toString();
-                            
-                            listUser_data.add(name);
-                            listUser_data.add(email);
-                            listUser_data.add(id);
-                            listUser_data.add(contact);
-                            listUser_data.add(host_name);
-                            listUser_data.add(host_email);
-                            listUser_data.add(days);
-                            listUser_data.add(id_type);
-                            listUser_data.add(staying_place);
-                            //listUser_data.add(uniqueID);
-                            
-                            hmUser_data.put(contact, listUser_data);
-                            // Storing information into a file
-//                            try {
-//                                FileWriter w = new FileWriter("user_details.txt", true);
-//                                
-//                                w.write(name + "\n");
-//                                w.write(email + "\n");
-//                                w.write(id + "\n");
-//                                w.write(contact + "\n");
-//                                w.write(host_name + "\n");
-//                                w.write(host_email + "\n");
-//                                w.write(days + "\n");
-//                                w.write(id_type + "\n");
-//                                w.write(staying_place + "\n");
-//                                w.close();
-//                            } catch (IOException ex) {
-//                                Logger.getLogger(code.class.getName()).log(Level.SEVERE, null, ex);
-//                            }
-                            
-                            //JOptionPane.showMessageDialog(null, "User information saved successfully");
-                            frame.setVisible(false);
-                            // Prompting UUID
-                            prompt_frame = new JFrame("UUID");
-                            lbl_UUID = new JLabel(uniqueID);
-                            
+				//**************************************************************************************************************
+				// STORING DETAILS INTO HASHMAP
+				name = txtName.getText(); 
+				email = txtEmail.getText();
+				id = txtId.getText();
+				contact = txtContact.getText();
+				host_name = txtHostName.getText();
+				host_email = txtHostEmail.getText();
+				days = txtDays.getText();
+				id_type = txtIdType.getSelectedItem() + "";
+				staying_place = txtStayingPlace.getSelectedItem() + "";
+
+				// Creating UUID
+				uniqueID = UUID.randomUUID().toString();
+
+				listUser_data.add(name);
+				listUser_data.add(email);
+				listUser_data.add(id);
+				listUser_data.add(contact);
+				listUser_data.add(host_name);
+				listUser_data.add(host_email);
+				listUser_data.add(days);
+				listUser_data.add(id_type);
+				listUser_data.add(staying_place);
+				hmUser_data.put(contact, listUser_data);
+				frame.setVisible(false);
+				// Prompting UUID
+				prompt_frame = new JFrame("UUID");
+				lbl_UUID = new JLabel(uniqueID);
+
 			}
-                        else if(source.equals(btnCancel)){
-                            frame.setVisible(false);
-                        }
+			else if(source.equals(btnCancel)){
+				 frame.setVisible(false);
+			}
 			else if(source.equals(btnCamera))
 			{
-                            Webcam webcam = Webcam.getDefault();
-                            webcam.setViewSize(new Dimension(640, 480));
-                            webcam.open();
-                            try {
-                                ImageIO.write(webcam.getImage(), "JPG", new File("user_image.jpg"));
-                            } catch (IOException ex) {
-                                Logger.getLogger(code.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            webcam.close();
+				Webcam webcam = Webcam.getDefault();
+				webcam.setViewSize(new Dimension(640, 480));
+				webcam.open();
+				try {
+					ImageIO.write(webcam.getImage(), "JPG", new File("user_image.jpg"));
+				} catch (IOException ex) {
+					Logger.getLogger(code.class.getName()).log(Level.SEVERE, null, ex);
+				}
+				webcam.close();
 			}
-//			frame.dispose();
-//			frame.setVisible(true);
-                        else if(source.equals(btnPrev_img)){
-                            File file = new File("C:\\Users\\91905\\Documents\\NetBeansProjects\\visitor_management_system\\user_image.jpg");
-                            BufferedImage image = null;
-                            try {
-                                image = ImageIO.read(file);
-                            } catch (IOException ex) {
-                                Logger.getLogger(code.class.getName()).log(Level.SEVERE, null, ex);
-                            }
-                            prev_img = new JFrame();
-                            JLabel img_label = new JLabel(new ImageIcon(image));
-                            prev_img.getContentPane().add(img_label, BorderLayout.CENTER);
-                            prev_img.pack();
-                            prev_img.setVisible(true);
-                        }
-                        else if(source.equals(btnConfirm_img)){
-                            JOptionPane.showMessageDialog(null, "Image saved successfully");
-                        }
+			else if(source.equals(btnPrev_img)){
+				File file = new File("C:\\Users\\91905\\Documents\\NetBeansProjects\\visitor_management_system\\user_image.jpg");
+				BufferedImage image = null;
+				try {
+					image = ImageIO.read(file);
+				} catch (IOException ex) {
+					Logger.getLogger(code.class.getName()).log(Level.SEVERE, null, ex);
+				}
+				prev_img = new JFrame();
+				JLabel img_label = new JLabel(new ImageIcon(image));
+				prev_img.getContentPane().add(img_label, BorderLayout.CENTER);
+				prev_img.pack();
+				prev_img.setVisible(true);
+			}
+			else if(source.equals(btnConfirm_img)){
+				JOptionPane.showMessageDialog(null, "Image saved successfully");
+			}
 		}
 	}
-        static void init(){
-            try
+	static void init() {
+		try
 		{
 			UIManager.setLookAndFeel("javax.swing.plaf.nimbus.NimbusLookAndFeel");
 		}
@@ -385,9 +368,9 @@ public class lol{
 		obj.host_details();
 		obj.venue_details();
 		obj.submit_and_cancel();
-                obj.camera();
+		obj.camera();
 		obj.frameSettings();
-        }
+	}
 	public static void main(String []args)
 	{
 		init();
