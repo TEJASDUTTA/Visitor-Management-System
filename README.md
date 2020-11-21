@@ -5,9 +5,7 @@ Clone the repo in your system using the command:
 
 git clone https://github.com/noob-aViral/OOM-Project.git
 
-cd OOM-Project/
-
-
+cd OOM-Project/<br><br>
 Run the java file using the command: 
   
 java -jar visitor_management_system.jar
