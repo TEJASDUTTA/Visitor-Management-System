@@ -40,14 +40,14 @@ public class SendEmailHost {
         // Sender's email ID needs to be mentioned
         //String from = "iit2019156@iiita.ac.in";//change accordingly
         //String to_2 = viewpage.host_email;
-        String from = "bhupeshsardana01@gmail.com";
+        String from = "****";
         
         //<editor-fold defaultstate="collapsed" desc="username">
-            final String username = "bhupeshsardana01";
+            final String username = "****";
         //</editor-fold>
         
         //<editor-fold defaultstate="collapsed" desc="password">
-            final String password = "66R@dio@ctive33";
+            final String password = "****";
         //</editor-fold>
         
         // Assuming you are sending email through relay.jangosmtp.net
